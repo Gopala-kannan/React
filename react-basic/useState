@@ -18,3 +18,27 @@ function App() {
 }
 
 export default App;
+
+
+// another example
+
+import React, { useState } from 'react'
+import './App.css'
+
+function App() {
+
+  const [brand, setBrand] = useState('Ferrari');
+  const [model, setModel] = useState('Roma');
+  const [year, setYear] = useState('2024');
+  const [color, setColor] = useState('Blue');
+
+  
+  return (
+    <>
+     <h1>My {brand}</h1>
+     <h2>It is a {color} {model} from {year}</h2>
+    </>
+  )
+}
+
+export default App;
