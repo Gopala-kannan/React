@@ -102,3 +102,30 @@ function App() {
 }
 
 export default App;
+
+
+// another example
+
+import React, { useState } from 'react'
+import './App.css'
+
+function App() {
+
+  const [count, setCount] = useState(0);
+
+  const increaseCount = () => {
+    setCount(count =>count+ 1); // or use this method setCount(count + 1)
+    setCount(count =>count+ 1); // if you add this code the code number is increase 2
+    setCount(count =>count+ 1); // 3
+    setCount(count =>count+ 1); // 4
+  }
+  
+  return (
+    <>
+     <h1>Count: {count}</h1>
+     <button onClick={increaseCount}>Increase By 4</button>
+    </>
+  )
+}
+
+export default App;
