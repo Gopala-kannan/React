@@ -1,0 +1,28 @@
+// useLayoutEffect works similarly to useEffect, but it is called before the User Interface gets mounted.
+// useEffect get called after printing the DOM elements.
+// useLayoutEffect gets called before printing the DOM elements.
+
+import React, { useState , useEffect, useLayoutEffect} from 'react'
+import './App.css'
+
+function App() {
+
+  useEffect(()=>{
+    console.log('Message from useEffect');
+  },[])
+
+  useLayoutEffect(()=>{
+    console.log('Message from useLayoutEffect');
+  },[])
+ 
+  return (
+    <>
+      <h2>Text Message</h2>
+      {Array(40000).fill('').map((item, index)=>(
+        <li key={index}>{Math.pow(Math.random(),10)}</li>
+        ))}
+    </>
+  )
+}
+
+export default App;
