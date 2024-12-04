@@ -1,0 +1,53 @@
+// React allows us to create our own hook which is know as custom hook
+
+// App.jsx
+
+import React from 'react'
+import './App.css'
+import useLocalStorage from './Context/useLocalStorage';
+
+function App() {
+
+  const [name, setName] = useLocalStorage('username', '')
+  const [id, setId] = useLocalStorage('userId', '')
+
+  return (
+    <>
+      <input
+        type="text" 
+        placeholder='Enteer your name'
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+       />
+       <h2>Hello, {name} !</h2>
+       <input
+        type="text" 
+        placeholder='Enteer your name'
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+       />
+       <h2>Your id: {id} !</h2>
+    </>
+  )
+}
+
+export default App;
+
+// useLocalStorage.jsx
+
+import React, {useState, useEffect} from 'react'
+
+const useLocalStorage = (key, initalValue) => {
+    
+  const [name, setName] = useState(
+    localStorage.getItem(key)?
+    localStorage.getItem(key): initalValue
+  )
+  useEffect(()=>{
+    localStorage.setItem(key,name)
+  },[name, key])
+
+  return [name, setName]
+}
+
+export default useLocalStorage
